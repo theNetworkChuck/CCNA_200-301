@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<TrainerList>
+<Trainer id="trainer1">
+<name>Jeremy Cioara</name>
+<favoriteciscocommand>show ip interface brief</favoriteciscocommand>
+<age>64</age>
+
+<Trainer id="trainer2">
+<name>Keith Barker</name>
+<favoriteciscocommand>show run, show interfaces, show run | sec router</favoriteciscocommand>
+<age>34</age>
+
+<Trainer id="trainer3">
+<name>NetworkChuck</name>
+<favoriteciscocommand>show cdp neighbors</favoriteciscocommand>
+<age>30</age>
+
+</TrainerList>
