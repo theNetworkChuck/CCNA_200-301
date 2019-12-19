@@ -1,0 +1,24 @@
+{
+"TrainerList": {
+"Trainers": [
+{
+"trainerid": 1,
+"name": "Jeremy Cioara",
+"favoriteciscocommand": "show ip interface brief",
+"age": 64
+},
+{
+"trainerid": 2,
+"name": "Keith Barker",
+"favoriteciscocommand": ["show run", "show interfaces", "show run | inc router"],
+"age": 34
+},
+{
+"trainerid": 3,
+"name": "NetworkChuck",
+"favoriteciscocommand": "show cdp neighbors",
+"age": 30
+}
+]
+}
+}
