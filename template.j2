@@ -1,0 +1,25 @@
+!
+hostname {{ siteinfo.sitename }}
+!
+{% for n in range(3) %}
+interface GigabitEthernet0/{{ n+1 }}
+{% if n+1 == 1 %}
+ description Connection to Router
+ switchport mode trunk
+ switchport trunk allowed vlan 1,7,9
+{% else %}
+ description Access Port
+ switchport access vlan 7
+ switchport voice vlan 9
+ switchport mode access
+{% endif %}}
+{% endfor %}
+!
+interface vlan 7
+ description Data vlan
+ ip address {{ siteinfo.vlan7 }}
+!
+interface vlan 9
+ description Voice vlan
+ ip address {{ siteinfo.vlan9 }}
+!
