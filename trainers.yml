@@ -1,0 +1,21 @@
+#TrainerList
+
+- Trainer1:
+    name: Jeremy Cioara
+    favorite cisco command: Show ip interface brief
+    age: 64
+
+- Trainer2:
+    name: Keith Barker
+    favorite cisco command: 
+      - show run
+      - show interfaces
+      - show run | sec router
+    age: 34
+
+- Trainer3:
+    name: NetworkChuck
+    favorite cisco command: show cdp neighbors
+    age: 30
+
+
