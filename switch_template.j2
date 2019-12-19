@@ -1,0 +1,73 @@
+!
+hostname {{ siteinfo.hostname }}
+!
+service password-encryption
+!
+no ip domain-lookup
+!
+{% for n in range(3) %}
+interface GigabitEthernet0/{{ n+1 }}
+{% if n+1 == 1 %}
+ description Connection to Router
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 1,7,9,999
+ no shut
+{% else %}
+ description Access Port
+ switchport access vlan 7
+ switchport voice vlan 9
+ switchport mode access
+ no shut
+{% endif %}}
+{% endfor %}
+!
+interface vlan 999
+ ip address {{ siteinfo.vlan999 }}
+ no shut
+vlan 7
+ description Data Vlan
+!
+vlan 9
+ description Voice Vlan
+!
+vlan 999
+ description MGMT Vlan
+!
+line vty 0 4
+ logging synchronous
+!
+banner login ^C
+                                     .:+syyyyys+:.
+                                  :smMMMMMMMMMMMMMms:
+                               `oNMMMMMMMMMMMMMMMMMMMd:
+                              :mMMMMMMMMMMMMMMMMMMMMMMMs
+                             :NMMMMMMMMhsdMMMMMMMMMMMMMMy
+                            `NMMMMMMMMh` `./shmNMMMMMMMMMo
+                            oMMMMMMNh:        ``../sdMMMMM.
+                            dMMNs+:.                `-yMMM+
+                            NMM+                       oMMy
+                            NMM:                       .MMh
+                          -yNMM`                        NMmy-
+                          dosMM  :oyyyo:.    `-+yhys/` `MMo+m
+                          ys/MM`-:....://-  `//:-...-: .MM/od
+                          /N.MM-                       :MM-d+
+                           hhNM:                       /MNyd`
+                           `sNM/                       +MNo`
+                          .hMMMNs`     .-::--::-`    `sMMMMy.
+                         `mMMMMMMd--:+hmMMMMMMMMds/:-dMMMMMMm.
+                         +MMMMMMMMNMMMMMMNhssdMMMMMMMMMMMMMMMh
+                         hMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM`
+                         NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-
+                         MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM:
+                         NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM.
+                         yMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMd
+                         -MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM:
+                          oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM+
+                           -yNMMMMMMMMMMMMMMMMMMMMMMMMMMMNy-
+                             `+hNMMMMMMMMMMMMMMMMMMMMMNh+`
+                                `:ohNMMMMMMMMMMMMMNho:`
+                                     .:+oyyhyso+:.
+^C
+!
+do cop r s
